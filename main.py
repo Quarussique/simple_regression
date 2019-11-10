@@ -1,6 +1,6 @@
 dataset_raw = []
 dataset = []
-dataset_file = open("datasettest", 'r')
+dataset_file = open("dataset", 'r')
 for line in dataset_file.readlines():
     dataset_raw.append(line)
 for i in range(len(dataset_raw)):
@@ -39,7 +39,7 @@ counter = 0
 theta0 = 0
 theta1 = 0
 eps = float(1)
-alpha = 0.001
+alpha = 0.0005
 while abs(eps) > 0:
     new_theta0 = theta0 - alpha * j_derivative_theta0(theta0, theta1, len(dataset), dataset)
     new_theta1 = theta1 - alpha * j_derivative_theta1(theta0, theta1, len(dataset), dataset)
@@ -47,6 +47,8 @@ while abs(eps) > 0:
     theta0, theta1 = new_theta0, new_theta1
     counter += 1
     print('Counter: ', counter)
+    print(round(theta0, 2), round(theta1, 2))
+    print(eps)
 
 
 print(round(theta0, 2), round(theta1, 2))
